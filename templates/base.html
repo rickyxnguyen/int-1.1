@@ -1,0 +1,38 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel='stylesheet' href='../static/bootstrap.min.css'>
+    <link rel='stylesheet' href='../static/styles.css'>
+    <title>X Editor</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg" id="nav">
+        <a class="navbar-brand" href="{{ url_for('index') }}">X Editor</a>
+    </nav>
+
+    <div class='box'>This is where images go!</div>
+
+    {%block content%}
+
+    {%endblock%}
+
+    <div class="row" id='upload'>
+        <form action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data" id = 'upload' >
+            <div class="form-group">
+                <label for="images" id='image-upload'>File input</label>
+                <div id='images'>
+                    <input type="file" name="images" accept="image/*" multiple>
+                </div>
+                <p class="help-block">Select Images to Upload.</p>
+                <input type="submit" value="Upload" class="btn btn-success" id='button'>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
