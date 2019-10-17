@@ -1,0 +1,18 @@
+{% if thumbnail_names %}
+<div class="row">
+    {% for thumbnail_name in thumbnail_names %}
+    <div class="col-md-6 img-div" >
+        <img src="{{url_for('thumbnails', filename=thumbnail_name)}}" class="img-responsive thumb" data-toggle="modal"
+            data-target="#image{{ loop.index0 }}" id = 'gallery'     />
+        <div class="modal fade" id="image{{ loop.index0 }}" tabindex="-1" role="dialog"
+            aria-labelledby="image{{ loop.index0 }}ModalLabel">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <img src="{{url_for('images', filename=thumbnail_name)}}" class="img-responsive" />
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}

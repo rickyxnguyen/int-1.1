@@ -14,15 +14,23 @@
     <nav class="navbar navbar-expand-lg" id="nav">
         <a class="navbar-brand" href="{{ url_for('index') }}">X Editor</a>
     </nav>
-
-    <div class='box'>This is where images go!</div>
-
+    <div class='row'>
+        <div class="btn-group-vertical" data-toggle="buttons" id='filters'>
+            <button type="button" class="btn btn-secondary"><a href='/filter/sharpen'>Sharpen</a></button>
+            <button type="button" class="btn btn-secondary">Vibrance</button>
+            <button type="button" class="btn btn-secondary">Button</button>
+            <button type="button" class="btn btn-secondary">Button</button>
+            <button type="button" class="btn btn-secondary">Button</button>
+            <button type="button" class="btn btn-secondary">Button</button>
+        </div>
+        <div class='box'>{%include 'gallery.html'%}</div>
+    </div>
     {%block content%}
 
     {%endblock%}
 
     <div class="row" id='upload'>
-        <form action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data" id = 'upload' >
+        <form action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data" id='upload'>
             <div class="form-group">
                 <label for="images" id='image-upload'>File input</label>
                 <div id='images'>

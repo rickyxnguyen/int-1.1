@@ -1,26 +1,59 @@
 .box {
-    width:60%;
-    height:60%;
-    border:2px solid #000;
-    margin:0 20% 0 20%;
+    height: 60%;
+    margin: 0 20% 0 20%;
     text-align: center;
+
+}
+
+.row {
+    text-align: center;
+    margin-top: 5%;
+    height: 50%;
+}
+
+#filters {
+    text-align: center;
+    float:left;
 }
 
 #nav {
     height: 2%;
-    margin-bottom: 1%;
 }
-#upload{
+
+#upload {
     margin-top: 2%;
     justify-content: center;
 }
-#images{
 
-    margin:1% 0 1% 13%;
+#images {
+
+    margin: 1% 0 1% 13%;
 }
-.form-group{
+
+.form-group {
     text-align: center;
 }
-#upload{
+
+#upload {
     width: 100%;
+}
+
+.thumb:hover {
+    cursor: pointer;
+}
+
+.img-div {
+    margin-bottom: 15px;
+}
+
+#gallery{
+    display: inline;
+    justify-content: center;
+    margin-left: 35%;
+
+}
+@media only screen and (max-width: 320px) {
+    .img-div {
+        width: 100%;
+    }
 }
