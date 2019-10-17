@@ -10,39 +10,42 @@ from skimage import io, filters
 import numpy as np
 
 app = Flask(__name__)
-
+# This will create directories for images and will add them into them
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 images_directory = os.path.join(APP_ROOT, 'images')
 thumbnails_directory = os.path.join(APP_ROOT, 'thumbnails')
-
+#If they don't exist the app will make it automatically
 if not os.path.isdir(images_directory):
     os.mkdir(images_directory)
 if not os.path.isdir(thumbnails_directory):
     os.mkdir(thumbnails_directory)
 
-
+#This will display all of the thumbnails added from the upload
 @app.route('/')
 def index():
     thumbnail_names = os.listdir('./thumbnails')
 
     return render_template('base.html', thumbnail_names=thumbnail_names)
 
-
+# This should allow for users to open each image individually
 @app.route('/thumbnails/<filename>')
 def thumbnails(filename):
     return send_from_directory('thumbnails', filename)
 
-
+# This will send the uploaded image directly into images folder
 @app.route('/images/<filename>')
 def images(filename):
     return send_from_directory('images', filename)
 
-
+# This will make the path to each image public to the app
 @app.route('/public/<path:filename>')
 def static_files(filename):
     return send_from_directory('./public', filename)
 
-
+"""
+This will allow the user to upload an image and will automatically create a thumbnail for each of them
+and create a copy of the filename
+"""
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
     if request.method == 'POST':
@@ -65,13 +68,7 @@ def upload():
     return render_template('upload.html')
 
 
-@app.route('/filter/sharpen')
-def sharpen():
-    for img in os.listdir('./thumbnails'):
-        image = skimage.img_as_float(io.imread(img))
-        blurred = filters.gaussian(image, sigma=10, multichannel=True)
-        sharper = np.clip(image * 1.3 - blurred * 0.3, 0, 1.0)
-        return sharper
+
 
 
 if __name__ == '__main__':
