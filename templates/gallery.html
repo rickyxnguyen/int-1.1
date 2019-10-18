@@ -1,7 +1,7 @@
 {% if thumbnail_names %}
 <div class="row">
     {% for thumbnail_name in thumbnail_names %}
-    <div class="col-md-6 img-div" >
+    <div class="col-md-3 img-div" >
         <img src="{{url_for('thumbnails', filename=thumbnail_name)}}" class="img-responsive thumb" data-toggle="modal"
             data-target="#image{{ loop.index0 }}" id = 'gallery'     />
         <div class="modal fade" id="image{{ loop.index0 }}" tabindex="-1" role="dialog"

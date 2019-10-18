@@ -1,14 +1,11 @@
 .box {
     height: 60%;
-    margin: 0 20% 0 20%;
     text-align: center;
 
 }
 
 .row {
     text-align: center;
-    margin-top: 5%;
-    height: 50%;
 }
 
 #filters {
@@ -21,7 +18,7 @@
 }
 
 #upload {
-    margin-top: 2%;
+    margin-top: 1%;
     justify-content: center;
 }
 
@@ -49,8 +46,11 @@
 #gallery{
     display: inline;
     justify-content: center;
-    margin-left: 35%;
 
+}
+#delete{
+    display: flex;
+    justify-content: center;
 }
 @media only screen and (max-width: 320px) {
     .img-div {

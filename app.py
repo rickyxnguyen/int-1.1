@@ -3,24 +3,20 @@ from PIL import Image
 from werkzeug.utils import secure_filename
 import os
 import glob
-import matplotlib
-import matplotlib.pyplot as plt
-import skimage
-from skimage import io, filters
-import numpy as np
+import shutil
 
 app = Flask(__name__)
 # This will create directories for images and will add them into them
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 images_directory = os.path.join(APP_ROOT, 'images')
 thumbnails_directory = os.path.join(APP_ROOT, 'thumbnails')
-#If they don't exist the app will make it automatically
+# If they don't exist the app will make it automatically
 if not os.path.isdir(images_directory):
     os.mkdir(images_directory)
 if not os.path.isdir(thumbnails_directory):
     os.mkdir(thumbnails_directory)
 
-#This will display all of the thumbnails added from the upload
+# This will display all of the thumbnails added from the upload
 @app.route('/')
 def index():
     thumbnail_names = os.listdir('./thumbnails')
@@ -42,6 +38,7 @@ def images(filename):
 def static_files(filename):
     return send_from_directory('./public', filename)
 
+
 """
 This will allow the user to upload an image and will automatically create a thumbnail for each of them
 and create a copy of the filename
@@ -62,13 +59,22 @@ def upload():
             upload.save(destination)
             # Save a copy of the thumbnail image
             image = Image.open(destination)
-            image.thumbnail((1200, 1200))
+            image.thumbnail((300, 200))
             image.save('/'.join([thumbnails_directory, filename]))
         return redirect(url_for('index'))
-    return render_template('upload.html')
 
 
+@app.route('/delete', methods=['GET', 'POST'])
+def delete():
+    shutil.rmtree(thumbnails_directory)
+    shutil.rmtree(images_directory)
+    os.mkdir(images_directory)
+    os.mkdir(thumbnails_directory)
 
+    return redirect(url_for('index'))
+
+
+files = glob.glob('/YOUR/PATH/*')
 
 
 if __name__ == '__main__':

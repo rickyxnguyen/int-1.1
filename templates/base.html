@@ -6,24 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel='stylesheet' href='../static/bootstrap.min.css'>
     <link rel='stylesheet' href='../static/styles.css'>
-    <title>X Editor</title>
+    <title>X Gallery</title>
 </head>
 
 <body>
 
     <nav class="navbar navbar-expand-lg" id="nav">
-        <a class="navbar-brand" href="{{ url_for('index') }}">X Editor</a>
+        <a class="navbar-brand" href="{{ url_for('index') }}">X Gallery</a>
     </nav>
-    <div class='row'>
-        <div class="btn-group-vertical" data-toggle="buttons" id='filters'>
-            <button type="button" class="btn btn-secondary">Arcade</button>
-            <button type="button" class="btn btn-secondary">Retro</button>
-            <button type="button" class="btn btn-secondary">Bridge</button>
-            <button type="button" class="btn btn-secondary">Botanical</button>
-            <button type="button" class="btn btn-secondary">Preserve</button>
-            <button type="button" class="btn btn-secondary">Highlands</button>
-        </div>
-        <div class='box'>{%include 'gallery.html'%}</div>
+    <div id='delete'>
+        <p>
+            <form method='POST' action='/delete'>
+                <input type='hidden'>
+                <button class='btn btn-success' type='submit'>Delete All Photos</button>
+            </form>
+        </p>
+    </div>
+
+    <div class='box'>{%include 'gallery.html'%}</div>
     </div>
     {%block content%}
 
