@@ -14,6 +14,7 @@
     <nav class="navbar navbar-expand-lg" id="nav">
         <a class="navbar-brand" href="{{ url_for('index') }}">X Gallery</a>
     </nav>
+    {% if thumbnail_names %}
     <div id='delete'>
         <p>
             <form method='POST' action='/delete'>
@@ -22,7 +23,7 @@
             </form>
         </p>
     </div>
-
+    {%endif%}
     <div class='box'>{%include 'gallery.html'%}</div>
     </div>
     {%block content%}
