@@ -62,7 +62,9 @@ def upload():
             image.thumbnail((300, 200))
             image.save('/'.join([thumbnails_directory, filename]))
         return redirect(url_for('index'))
-
+"""
+This will delete the thunbnails and images folder and create new ones in its place
+"""
 
 @app.route('/delete', methods=['GET', 'POST'])
 def delete():

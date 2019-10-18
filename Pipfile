@@ -14,6 +14,7 @@ numpy = "*"
 scikit-image = "*"
 itsdangerous = "*"
 image = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.7"
